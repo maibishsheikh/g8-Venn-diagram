@@ -1,0 +1,105 @@
+/* src/components/quiz/QuestionRenderer.css */
+
+.qr-wrap {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: clamp(10px, 1.5vh, 18px) clamp(12px, 2vw, 20px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.2vh, 12px);
+  box-sizing: border-box;
+}
+
+.qr-category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  background: rgba(242, 201, 76, 0.15);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-pill);
+  padding: 3px 10px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--gold-light);
+  letter-spacing: 0.5px;
+}
+
+.qr-question {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  line-height: 1.35;
+  color: #fff;
+  margin: 0;
+}
+
+.qr-visual {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
+
+.option-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  touch-action: manipulation;
+}
+
+.option-btn:hover:not(:disabled) {
+  background: rgba(45, 156, 219, 0.25);
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+
+.option-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.qr-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(242, 201, 76, 0.15);
+  border-left: 3px solid var(--gold);
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  color: var(--gold-light);
+}
+
+.qr-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+  width: 100%;
+}
+
+.qr-nav-btns {
+  display: flex;
+  gap: 8px;
+}
+

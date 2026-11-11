@@ -1,0 +1,267 @@
+/* src/components/gamification/KingdomMap.css */
+/* Conforms to TRD §7 / Screenshot 2 (Practice Phase — World Map) */
+
+.play-map-card {
+  width: 100%;
+  max-width: 950px;
+  padding: 24px 25px;
+  border-radius: 22px;
+  background: #131432;
+  border: 1px solid #262745;
+  position: relative;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* Accent line at card top edge */
+.play-map-card::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65px;
+  height: 3px;
+  border-radius: 999px;
+  background: #08bd88;
+}
+
+/* Title row */
+.play-map-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.play-map-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.play-map-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: #1fda96;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.play-map-sub {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #a4a8c5;
+}
+
+.play-star-pill {
+  background: #0c0d21;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #eeefff;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.star-icon {
+  color: #fdcb38;
+}
+
+/* 5 columns × 2 rows equal grid */
+.world-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px 13px;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+/* World Card */
+.world-card {
+  height: 134px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #181736;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+  user-select: none;
+}
+
+.world-card:hover:not(.locked) {
+  transform: translateY(-2px);
+  border-color: #1fda96;
+}
+
+.world-card.locked {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: grayscale(0.2);
+}
+
+.world-card.current {
+  border: 1.5px solid #1fda96;
+  background: #101532;
+  box-shadow: 0 0 14px rgba(31, 218, 150, 0.2);
+}
+
+.world-card.completed {
+  border-color: rgba(31, 218, 150, 0.4);
+}
+
+/* Card header row: W{n} and Q{start}–{end} */
+.world-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.world-badge {
+  background: #201f3e;
+  color: #edeeff;
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.world-q-range {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #3bb0e8;
+}
+
+.world-card.current .world-q-range {
+  color: #1fda96;
+}
+
+/* Card Icon */
+.world-icon {
+  font-size: 1.85rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* World Name */
+.world-name {
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: #d3d0ed;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+/* World Status */
+.world-status {
+  font-size: 0.76rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.status-locked {
+  color: #6c6f93;
+}
+
+.status-current {
+  color: #18cb89;
+  font-weight: 900;
+}
+
+.status-ready {
+  color: #a4a8c5;
+}
+
+.status-completed {
+  color: #86efac;
+  font-size: 0.72rem;
+}
+
+/* Action buttons under grid */
+.world-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.world-action-btn {
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 800;
+  background: #22223e;
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.world-action-btn.boss-btn {
+  color: #f3c563;
+  border: 1px solid rgba(255, 193, 7, 0.5);
+}
+
+.world-action-btn.boss-btn:hover {
+  transform: translateY(-2px);
+  border-color: #ffc107;
+  box-shadow: 0 0 12px rgba(255, 193, 7, 0.3);
+}
+
+.world-action-btn.reflect-btn {
+  color: #a8aec8;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.world-action-btn.reflect-btn:hover {
+  transform: translateY(-2px);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Responsive breakpoints per TRD §7.3 ── */
+@media (max-width: 768px) {
+  .world-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .world-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .play-map-card {
+    padding: 18px 14px;
+  }
+  .world-card {
+    height: 124px;
+    padding: 8px 10px;
+  }
+  .play-map-title {
+    font-size: 1.25rem;
+  }
+  .play-map-sub {
+    font-size: 0.8rem;
+  }
+}

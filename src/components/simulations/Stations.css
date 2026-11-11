@@ -1,0 +1,203 @@
+/* src/components/simulations/Stations.css */
+
+/* ─── Main Station Container ─────────────────────────────────────────────── */
+.station-wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: clamp(6px, 1vh, 12px) clamp(8px, 1.2vw, 16px);
+  gap: 8px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ─── Station Header & Badges ───────────────────────────────────────────── */
+.station-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 2px;
+  min-height: 34px;
+}
+
+.station-title-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.station-title {
+  color: #fcd34d;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(0.95rem, 1.2vw, 1.2rem);
+  line-height: 1.2;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.station-desc {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(0.74rem, 0.82vw, 0.84rem);
+  margin: 2px 0 0 0;
+  line-height: 1.3;
+}
+
+.station-target-box {
+  background: rgba(245, 158, 11, 0.22);
+  border: 1.5px solid #f59e0b;
+  border-radius: 10px;
+  padding: 3px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.station-target-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.72rem, 0.8vw, 0.82rem);
+  font-weight: 800;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.station-target-num {
+  color: #ffd54f;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(0.95rem, 1.15vw, 1.2rem);
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(255, 213, 79, 0.5);
+}
+
+/* ─── 2-Column Responsive Grid ──────────────────────────────────────────── */
+.station-grid-2col {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(8px, 1.2vw, 14px);
+  align-items: start;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.station-col-left {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.station-col-right {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+/* ─── Station Compact Glass Cards ───────────────────────────────────────── */
+.station-col-right .glass-card {
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(26, 20, 68, 0.75);
+  border: 1px solid rgba(130, 110, 210, 0.22);
+}
+
+.station-card-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ─── Overlays & Success Banners (Safe Z-Index, No Clipping) ──────────────── */
+.station-overlay-banner {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  right: 10px;
+  padding: 8px 14px;
+  text-align: center;
+  border-radius: 12px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 25;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+}
+
+.station-success-modal {
+  position: absolute;
+  inset: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 30;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+}
+
+/* ─── Tokens ────────────────────────────────────────────────────────────── */
+.venn-tokens-layer {
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.token-disc {
+  transition: all var(--transition-fast);
+}
+
+.venn-token-node:hover .token-disc {
+  stroke: var(--gold);
+  stroke-width: 2.5;
+}
+
+.venn-token-node.is-selected .token-disc {
+  filter: drop-shadow(0 0 8px rgba(242, 201, 76, 0.8));
+}
+
+/* ─── Responsive Media Queries ──────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .station-wrap {
+    padding: 6px 8px;
+    gap: 8px;
+  }
+  .station-grid-2col {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .station-col-left {
+    min-height: 220px;
+  }
+  .station-title {
+    font-size: 1rem;
+  }
+}
